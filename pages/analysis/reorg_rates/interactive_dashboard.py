@@ -81,6 +81,11 @@ def render_sidebar_config(cluster: str, network: str) -> Dict[str, Any]:
         logger.info(f"Using experimental cluster for {network}")
         st.sidebar.info(f"Auto-selected experimental cluster for {network}")
     
+    if 'sunnyside' in network.lower() and cluster != 'sunnyside':
+        cluster = 'sunnyside'
+        logger.info(f"Using sunnyside cluster for {network}")
+        st.sidebar.info(f"Auto-selected sunnyside cluster for {network}")
+        
     # Grouping selection (moved to top)
     st.sidebar.subheader("🧩 Grouping")
     

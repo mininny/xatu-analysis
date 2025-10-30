@@ -69,6 +69,7 @@ def load_event_timing_grouped(
     proposer_filters: Dict[str, Any],
     receiver_filters: Dict[str, Any],
     enable_blob_bucketing: bool = False,
+    mev_filter: str = 'both',
 ) -> Dict[str, Any]:
     conn = get_database_connection(cluster_name)
     if not conn:
@@ -128,6 +129,7 @@ def load_event_timing_grouped(
             proposer_filter_sql=proposer_filter_sql,
             receiver_filter_sql=receiver_filter_sql,
             enable_blob_bucketing=enable_blob_bucketing,
+            mev_filter=mev_filter,
         )
     else:
         samples_sql = build_simple_samples_query(

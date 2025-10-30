@@ -47,6 +47,20 @@ LIBP2P_DIFF_COLUMN = {
 }
 
 
+def _build_mev_filter_clause(mev_filter: str, mev_status_expr: str) -> str:
+    """Build MEV filter SQL clause based on filter type.
+
+    Args:
+        mev_filter: 'both', 'yes' (MEV only), or 'no' (local build only)
+        mev_status_expr: SQL expression that evaluates to mev status (e.g., "if(mev.slot > 0, 'mev', 'non-mev')")
+    """
+    if mev_filter == 'yes':
+        return f"\n  AND ({mev_status_expr}) = 'mev'"
+    elif mev_filter == 'no':
+        return f"\n  AND ({mev_status_expr}) = 'non-mev'"
+    return ""  # 'both' or None means no filter
+
+
 def build_time_series_query(network: str, data_source: str, event: str, max_records: int = 10000) -> str:
     if data_source == "beacon_api":
         table = BEACON_API_TABLES[event]
@@ -118,6 +132,7 @@ def build_grouped_samples_query(
     proposer_filter_sql: str,
     receiver_filter_sql: str,
     enable_blob_bucketing: bool = False,
+    mev_filter: str = 'both',
 ) -> str:
     if data_source == "beacon_api":
         table = BEACON_API_TABLES[event]
@@ -214,10 +229,16 @@ SELECT
     ELSE 'unknown'
   END AS receiver_group,
   b.diff_ms{', sb.blob_count' if enable_blob_bucketing else ''}
-FROM base b
-LEFT JOIN `{network}`.int_block_proposer_head iph ON b.slot = iph.slot
-LEFT JOIN proposer_meta pm ON iph.proposer_validator_index = pm.validator_index
-LEFT JOIN receiver_meta rm ON b.meta_client_name = rm.meta_client_name{' LEFT JOIN slot_blob sb ON b.slot = sb.slot' if enable_blob_bucketing else ''}
+FROM base AS b
+LEFT JOIN `{network}`.int_block_proposer_head AS iph ON b.slot = iph.slot
+LEFT JOIN (
+  SELECT DISTINCT slot
+  FROM `{network}`.int_block_mev_head
+  WHERE slot_start_date_time BETWEEN %(start_date)s AND %(end_date)s
+) AS mev ON b.slot = mev.slot
+LEFT JOIN proposer_meta AS pm ON iph.proposer_validator_index = pm.validator_index
+LEFT JOIN receiver_meta AS rm ON b.meta_client_name = rm.meta_client_name{' LEFT JOIN slot_blob AS sb ON b.slot = sb.slot' if enable_blob_bucketing else ''}
+WHERE 1=1{_build_mev_filter_clause(mev_filter, "if(mev.slot > 0, 'mev', 'non-mev')")}
 ORDER BY b.slot_start_date_time DESC{f'\nLIMIT {max_records}' if max_records > 0 else ''}
 """
     return query

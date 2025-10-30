@@ -22,7 +22,13 @@ clickhouse:
       protocol: https
       # Credentials from env: EXPERIMENTAL_CLICKHOUSE_USERNAME, EXPERIMENTAL_CLICKHOUSE_PASSWORD
       description: "Experimental Xatu ClickHouse cluster"
-    
+    sunnyside:
+      host: 94.130.19.237
+      port: 8123
+      database: default
+      protocol: http
+      # Credentials from env: SUNNYSIDE_CLICKHOUSE_USERNAME, SUNNYSIDE_CLICKHOUSE_PASSWORD
+      description: "Sunnyside ClickHouse cluster"
   # Default cluster to use if not specified
   default_cluster: xatu
   
@@ -86,6 +92,12 @@ networks:
     chain_id: null
     description: "Fusaka development network"
     genesis_timestamp: 1757512800
+    enabled: true
+  fusaka-devnet-ssl-part-msg-1:
+    name: "Fusaka Devnet SSL Part Msg 1"
+    chain_id: null
+    description: "Fusaka development network"
+    genesis_timestamp: 1761816267
     enabled: true
 
 # API integrations

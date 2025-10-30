@@ -350,6 +350,21 @@ def render_sidebar_config(cluster: str, network: str) -> Dict[str, Any]:
         filter_zero_blobs = False
         num_buckets = 1
 
+    # MEV/Block Building Filter
+    st.sidebar.subheader("🎰 Block Building Filter")
+
+    mev_filter = st.sidebar.selectbox(
+        "Block Source",
+        options=['both', 'yes', 'no'],
+        index=0,  # Default to 'both'
+        format_func=lambda x: {
+            'both': 'All Blocks',
+            'yes': 'MEV Relay Blocks Only',
+            'no': 'Local Build Blocks Only'
+        }[x],
+        help="Filter blocks by their building method: MEV relay-built vs locally-built blocks"
+    )
+
     # Chart Options (matching peerdas_analysis_v2)
     st.sidebar.subheader("📊 Chart Options")
 
@@ -415,6 +430,7 @@ def render_sidebar_config(cluster: str, network: str) -> Dict[str, Any]:
         'enable_blob_bucketing': enable_blob_bucketing,
         'filter_zero_blobs': filter_zero_blobs,
         'num_buckets': num_buckets,
+        'mev_filter': mev_filter,
         'unlimited_mode': unlimited_mode,
         'load_data': load_data,
     }
@@ -461,6 +477,7 @@ def main():
             proposer_filters=config['proposer_filters'],
             receiver_filters=config['receiver_filters'],
             enable_blob_bucketing=config['enable_blob_bucketing'],
+            mev_filter=config.get('mev_filter', 'both'),
         )
 
     # Data Summary Section

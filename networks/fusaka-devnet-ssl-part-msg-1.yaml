@@ -1,0 +1,490 @@
+version: '1.0'
+nodes:
+  bootnode-1:
+    groups:
+    - bootnode
+    - xatu_sentry
+    tags:
+    - supernode
+    attributes:
+      ansible_host: 209.38.109.57
+      ipv6: 2a03:b0c0:2:f0::f6a5:a001
+      cloud: digitalocean
+      cloud_region: ams3
+      supernode: true
+    validator_range: null
+  mev-relay-1:
+    groups:
+    - lighthouse_reth_super
+    - mev_relay
+    tags:
+    - supernode
+    - cl:lighthouse
+    - el:reth
+    - super
+    attributes:
+      ansible_host: 206.189.193.45
+      ipv6: 2604:a880:400:d1:0:3:11cf:8001
+      cloud: digitalocean
+      cloud_region: nyc1
+      supernode: true
+    validator_range: null
+  prysm-geth-super-1:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 137.184.153.78
+      ipv6: 2604:a880:400:d1:0:3:11cd:6001
+      cloud: digitalocean
+      cloud_region: nyc1
+      supernode: true
+    validator_range:
+      start: 0
+      end: 8
+      count: 8
+  prysm-geth-super-2:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 143.198.106.95
+      ipv6: 2604:a880:4:1d0:0:1:1f32:f000
+      cloud: digitalocean
+      cloud_region: sfo3
+      supernode: true
+    validator_range:
+      start: 8
+      end: 16
+      count: 8
+  prysm-geth-super-3:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 167.99.39.48
+      ipv6: 2a03:b0c0:2:f0::f6a5:c001
+      cloud: digitalocean
+      cloud_region: ams3
+      supernode: true
+    validator_range:
+      start: 16
+      end: 24
+      count: 8
+  prysm-geth-super-4:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 178.128.41.68
+      ipv6: 2a03:b0c0:1:e0::bf1c:1001
+      cloud: digitalocean
+      cloud_region: lon1
+      supernode: true
+    validator_range:
+      start: 24
+      end: 32
+      count: 8
+  prysm-geth-super-5:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 207.154.238.44
+      ipv6: 2a03:b0c0:3:f0:0:1:749a:1000
+      cloud: digitalocean
+      cloud_region: fra1
+      supernode: true
+    validator_range:
+      start: 32
+      end: 40
+      count: 8
+  prysm-geth-super-6:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 143.198.34.94
+      ipv6: 2604:a880:cad:d0:0:1:10ca:b001
+      cloud: digitalocean
+      cloud_region: tor1
+      supernode: true
+    validator_range:
+      start: 40
+      end: 48
+      count: 8
+  prysm-geth-super-7:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 139.59.35.19
+      ipv6: 2400:6180:100:d0::c68b:f001
+      cloud: digitalocean
+      cloud_region: blr1
+      supernode: true
+    validator_range:
+      start: 48
+      end: 56
+      count: 8
+  prysm-geth-super-8:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 209.38.18.99
+      ipv6: 2400:6180:10:200::7f4f:0
+      cloud: digitalocean
+      cloud_region: syd1
+      supernode: true
+    validator_range:
+      start: 56
+      end: 64
+      count: 8
+  prysm-geth-super-9:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 147.182.138.84
+      ipv6: 2604:a880:400:d1:0:3:11cd:7001
+      cloud: digitalocean
+      cloud_region: nyc1
+      supernode: true
+    validator_range:
+      start: 64
+      end: 72
+      count: 8
+  prysm-geth-super-10:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 143.198.149.195
+      ipv6: 2604:a880:4:1d0:0:1:1f33:0
+      cloud: digitalocean
+      cloud_region: sfo3
+      supernode: true
+    validator_range:
+      start: 72
+      end: 80
+      count: 8
+  prysm-geth-super-11:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 142.93.128.5
+      ipv6: 2a03:b0c0:2:f0::f6a5:b001
+      cloud: digitalocean
+      cloud_region: ams3
+      supernode: true
+    validator_range:
+      start: 80
+      end: 88
+      count: 8
+  prysm-geth-super-12:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 206.189.26.121
+      ipv6: 2a03:b0c0:1:e0::bf1c:1
+      cloud: digitalocean
+      cloud_region: lon1
+      supernode: true
+    validator_range:
+      start: 88
+      end: 96
+      count: 8
+  prysm-geth-super-13:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 64.226.68.219
+      ipv6: 2a03:b0c0:3:f0:0:1:749a:2000
+      cloud: digitalocean
+      cloud_region: fra1
+      supernode: true
+    validator_range:
+      start: 96
+      end: 104
+      count: 8
+  prysm-geth-super-14:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 138.197.165.51
+      ipv6: 2604:a880:cad:d0:0:1:10ca:a001
+      cloud: digitalocean
+      cloud_region: tor1
+      supernode: true
+    validator_range:
+      start: 104
+      end: 112
+      count: 8
+  prysm-geth-super-15:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 143.110.177.102
+      ipv6: 2400:6180:100:d0::c68c:1
+      cloud: digitalocean
+      cloud_region: blr1
+      supernode: true
+    validator_range:
+      start: 112
+      end: 120
+      count: 8
+  prysm-geth-super-16:
+    groups:
+    - prysm_geth_super
+    - xatu_sentry
+    - mev_boost
+    tags:
+    - supernode
+    - cl:prysm
+    - el:geth
+    - super
+    attributes:
+      ansible_host: 134.199.144.99
+      ipv6: 2400:6180:10:200::7f4e:f000
+      cloud: digitalocean
+      cloud_region: syd1
+      supernode: true
+    validator_range:
+      start: 120
+      end: 128
+      count: 8
+groups:
+  bootnode:
+  - bootnode-1
+  lighthouse_reth_super:
+  - mev-relay-1
+  mev_relay:
+  - mev-relay-1
+  prysm_geth_super:
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+  xatu_sentry:
+  - bootnode-1
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+  mev_boost:
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+tags:
+  supernode:
+  - bootnode-1
+  - mev-relay-1
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+  cl:lighthouse:
+  - mev-relay-1
+  cl:prysm:
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+  el:geth:
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+  el:reth:
+  - mev-relay-1
+  super:
+  - mev-relay-1
+  - prysm-geth-super-1
+  - prysm-geth-super-2
+  - prysm-geth-super-3
+  - prysm-geth-super-4
+  - prysm-geth-super-5
+  - prysm-geth-super-6
+  - prysm-geth-super-7
+  - prysm-geth-super-8
+  - prysm-geth-super-9
+  - prysm-geth-super-10
+  - prysm-geth-super-11
+  - prysm-geth-super-12
+  - prysm-geth-super-13
+  - prysm-geth-super-14
+  - prysm-geth-super-15
+  - prysm-geth-super-16
+metadata:
+  ethereum_network_name: fusaka-devnet-ssl-part-msg-1
+  source: localhost
+  network_name: fusaka-devnet-ssl-part-msg-1
